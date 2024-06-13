@@ -1,9 +1,13 @@
 import './Card.scss';
 
-export default function Card({ image, onClick }) {
+export default function Card({ image, onClick, isFlipped }) {
   return (
     <div className="card-container" onClick={onClick}>
-      <img src={image} alt="memory card" />
+      {isFlipped ? (
+        <img src={image} alt="memory card" className="card-img" />
+      ) : (
+        <div className="card-back"></div>
+      )}
     </div>
   );
 }
