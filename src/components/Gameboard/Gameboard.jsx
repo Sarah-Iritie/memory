@@ -22,6 +22,7 @@ export default function GameBoard() {
   const [cards, setCards] = useState([...images, ...images]); // Duplicate each image to have pairs
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
+  const [isLocked, setIsLocked] = useState(false);
 
   // Shuffle cards on initial load
   useEffect(() => {
@@ -32,24 +33,36 @@ export default function GameBoard() {
   }, []);
 
   const handleClick = (index) => {
-    if (flippedCards.includes(index) || matchedCards.includes(index)) {
-      return;
+    if (
+      isLocked ||
+      flippedCards.includes(index) ||
+      matchedCards.includes(index)
+    ) {
+      return; // Ignore clicks if gameboard is locked or card is already flipped or matched
     }
     const newFlippedCards = [...flippedCards, index];
     if (newFlippedCards.length === 2) {
-      const firstIndex = newFlippedCards[0];
-      const secondIndex = newFlippedCards[1];
+      setIsLocked(true); // Lock the gameboard when both cards are flipped
+      setFlippedCards(newFlippedCards); // Updates the state to flip both cards
+
+      const [firstIndex, secondIndex] = newFlippedCards;
       if (cards[firstIndex] === cards[secondIndex]) {
-        setMatchedCards([...matchedCards, firstIndex, secondIndex]);
-        setFlippedCards([]);
+        setTimeout(() => {
+          setMatchedCards([...matchedCards, firstIndex, secondIndex]);
+          setFlippedCards([]);
+          setIsLocked(false);
+        }, 500); // short delay before matching cards and resetting
       } else {
         setTimeout(() => {
           setFlippedCards([]);
-        }, 1500); // The cards flips back after 1s
+          setIsLocked(false);
+        }, 1500); // If the cards do not match, flip back after 1.5s
       }
     } else {
       // if only one card is flipped
-      setFlippedCards(newFlippedCards);
+      setTimeout(() => {
+        setFlippedCards(newFlippedCards);
+      }, 100);
     }
   };
 
