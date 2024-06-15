@@ -39,7 +39,22 @@
 
 @media (max-width: 768px) {
   .card-container {
-    width: calc(33.333% - 20px);
+    width: calc(33.333% - 90px);
     margin: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    width: 220px;
+    height: 190px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .card-container {
+    width: 220px;
+    height: 190px;
+    margin-left: 2rem;
   }
 }
