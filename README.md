@@ -2,11 +2,10 @@
 
 ## Description
 
-This project is an interactive memory card game built with React. Players click on cards to flip them and attempt to match pairs of cards based on the images shown. The illustrations are made by me.
+This project is an interactive memory card game built with React. Players click on cards and attempt to match pairs of cards based on the images shown. The illustrations are made by me.
 
 ## Features
 
-- Card flipping animation on click.
 - Randomly shuffled cards each game.
 - Visual indicators for matched cards.
 
@@ -41,4 +40,4 @@ To get this project running on your local machine, follow these steps:
 
 ## Usage
 
-Simply start the game and click on a card to flip it. Try to find another card with the same image. If both cards match, they will remain flipped. If they don't, they will flip back over. The goal is to match all pairs.
+Simply start the game and click on a card to see the image. Try to find another card with the same image. If both cards match, they will remain flipped. If they don't, they will flip back over. The goal is to match all pairs.
