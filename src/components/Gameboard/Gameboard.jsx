@@ -40,7 +40,9 @@ export default function GameBoard() {
     ) {
       return; // Ignore clicks if gameboard is locked or card is already flipped or matched
     }
+
     const newFlippedCards = [...flippedCards, index];
+
     if (newFlippedCards.length === 2) {
       setIsLocked(true); // Lock the gameboard when both cards are flipped
       setFlippedCards(newFlippedCards); // Updates the state to flip both cards
