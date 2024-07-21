@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import Loader from '../Loader/Loader';
-import './GameBoard.scss';
+import '../../../src/components/Gameboard/GameBoard.scss';
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
