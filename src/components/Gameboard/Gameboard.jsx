@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
+import Loader from '../Loader/Loader';
 import './GameBoard.scss';
 
 function shuffleArray(array) {
@@ -23,6 +24,7 @@ export default function GameBoard() {
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [isLocked, setIsLocked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Shuffle cards on initial load
   useEffect(() => {
@@ -30,6 +32,14 @@ export default function GameBoard() {
       shuffleArray(currentCards);
       return [...currentCards];
     });
+
+    // Loading delay
+    const delay = setTimeout(() => {
+      setIsLoading(false);
+    }, 1400);
+
+    // Clear timeout
+    return () => clearTimeout(delay);
   }, []);
 
   const handleClick = (index) => {
@@ -67,6 +77,10 @@ export default function GameBoard() {
       }, 100);
     }
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div
